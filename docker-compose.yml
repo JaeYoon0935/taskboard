@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./taskboard-fe
+    container_name: taskboard-fe-container
+    ports:
+      - "3030:80"
+    depends_on:
+      - backend
+    networks:
+      - taskboard-net
+
+  backend:
+    build:
+      context: ./taskboard-be/
+      dockerfile: Dockerfile
+    container_name: taskboard-be-container
+    ports:
+      - "8180:8180"
+    depends_on:
+      - db
+    networks:
+      - taskboard-net
+
+  db:
+    image: mysql:8
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: taskboard
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - taskboard-net
+
+volumes:
+  mysql-data:
+
+networks:
+  taskboard-net:
+    driver: bridge
