@@ -11,6 +11,7 @@ Docker를 활용해 컨테이너 기반 배포 환경을 구축했습니다.
 
 - Frontend: React (Context API + useReducer + Axios Interceptor)
 - Backend: Spring Boot (Spring JPA, Spring Security - JWT 인증 방식)
+- Database: MySQL
 - Version Control: GitHub (Git CLI 사용)
 - Deployment: Docker
 
@@ -27,7 +28,7 @@ Docker를 활용해 컨테이너 기반 배포 환경을 구축했습니다.
 # 배포
 
 - Docker Compose 기반 컨테이너 구성
-- 백엔드, 프론트엔드, DB(MySQL) 서비스 분리 구성
+- 프론트엔드, 백엔드, DB(MySQL) 서비스 분리 구성
 
 ---
 
