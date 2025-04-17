@@ -37,12 +37,12 @@ const CommentArea = ({ postsId }) => {
 
     return (
         <div className="comment">
-            <h2>Comment</h2>
+            <h2>댓글</h2>
             <div className="comment-actions">
                 <textarea className="comment-textarea" value={newComment} onChange={(e) => setNewComment(e.target.value)}/>
                 <button onClick={regComment} className="comment-submit-btn">등록</button>
             </div>
-            <br/><br/>
+            <br/><hr/><br/>
             <div className="comment-list">
                 {comments.map((comment) => (
                     <CommentItem key={comment.commentId} comment={comment} onDelete={() => delComment(comment.commentId)}/>

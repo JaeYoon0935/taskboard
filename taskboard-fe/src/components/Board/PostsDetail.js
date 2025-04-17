@@ -8,6 +8,8 @@ const PostsDetail = () => {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [regUser, setRegUser] = useState("");
+    const [regDts, setRegDts] = useState("");
 
     useEffect(() => {
         const getPostDetail = async () => {
@@ -15,6 +17,8 @@ const PostsDetail = () => {
                 const response = await axios.post("/api/Board/postDetail", { postsId });
                 setTitle(response.data.title);
                 setContent(response.data.content);
+                setRegUser(response.data.regUser);
+                setRegDts(response.data.regDts);
             } catch (error) {
                 alert("게시글 불러오기에 실패하였습니다.");
             }
@@ -59,16 +63,28 @@ const PostsDetail = () => {
     }
 
     return (
-        <div className="board-container">
+        <div className="posts-container">
             <h2>게시글 상세보기</h2>
             <br/>
-            <div className="board-wrapper">
-                <table className="board-table">
+            <div className="posts-wrapper">
+                <table className="posts-table">
                     <tbody>
                         <tr>
                             <td>제목</td>
                             <td>
                                 <input value={title} onChange={(e) => setTitle(e.target.value)}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>작성자</td>
+                            <td className="posts-readOnlyCont">
+                                <span>{regUser}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>등록일</td>
+                            <td className="posts-readOnlyCont">
+                                <span>{regDts}</span>
                             </td>
                         </tr>
                         <tr>
@@ -79,13 +95,13 @@ const PostsDetail = () => {
                         </tr>
                     </tbody>
                 </table>
-                <div className="board-actions">
+                <div className="posts-actions">
                     <a href="#" onClick={modProc} className="register-btn">수정</a>
                     &nbsp;&nbsp;
                     <a href="#" onClick={delProc} className="register-btn">삭제</a>
                 </div>
                 <CommentArea postsId={postsId} /> {/* postsId는 props 이다. */}
-                <div className="board-actions">
+                <div className="posts-actions">
                     <Link to="/Board" className="list-btn">목록</Link>
                 </div>
             </div>

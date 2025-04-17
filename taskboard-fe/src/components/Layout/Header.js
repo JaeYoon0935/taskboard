@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
-    const { dispatch } = useContext(AuthContext);
+    const { state, dispatch } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const logOutProc = () => {
@@ -16,7 +16,7 @@ function Header() {
         <header className="header">
             <div className="top-bar">
                 <div className="user-logout">
-                    <button onClick={logOutProc}>로그아웃</button>
+                    {state.token && (<button onClick={logOutProc}>로그아웃</button>)}
                 </div>
             </div>
 

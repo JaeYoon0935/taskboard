@@ -25,8 +25,7 @@ const Board = () => {
 
     return (
         <div className="board-container">
-            <h2>게시판</h2>
-            <br />
+            <br/><br/>
             <div className="board-wrapper">
                 <table className="board-table">
                     <tbody>

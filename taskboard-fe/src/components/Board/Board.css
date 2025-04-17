@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.board-table a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* 게시판을 감싸는 컨테이너 */
 .board-wrapper {
   width: 800px;
@@ -11,6 +16,7 @@
 
 /* 게시판 테이블 */
 .board-table {
+  height: 350px;
   width: 100%;
   border-collapse: collapse;
 }
@@ -18,7 +24,6 @@
 .board-table th,
 .board-table td {
   border: 1px solid black;
-  padding: 8px;
   text-align: center;
 }
 
@@ -43,6 +48,53 @@
   background-color: #474044;
   color: white;
   border-radius: 4px;
+}
+
+/* 게시글 - 상세보기 */
+.posts-container {
+  text-align: center;
+}
+
+.posts-wrapper {
+  width: 800px;
+  margin: 0 auto;
+  text-align: left; /* 내부 컨텐츠 좌측 정렬 */
+}
+
+.posts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.posts-table th,
+.posts-table td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.posts-table input,
+.posts-table textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.posts-table textarea {
+  height: 200px;
+}
+
+.posts-readOnlyCont {
+  text-align: left !important; 
+  padding-left: 10px;
+  height: 35px;
+}
+
+/* 등록 버튼을 오른쪽으로 정렬 */
+.posts-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 
 /* 댓글 입력 영역 */
@@ -76,16 +128,17 @@
 }
 
 .comment-item {
-  display: flex; /* 🔹 textarea와 버튼을 가로 정렬 */
-  align-items: center; /* 🔹 세로 중앙 정렬 */
-  gap: 10px; /* 🔹 textarea와 버튼 사이 여백 */
+  display: flex; /* textarea와 버튼을 가로 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 10px; /* textarea와 버튼 사이 여백 */
   width: 100%;
 }
 
 .comment-textarea {
-  flex-grow: 1; /* 🔹 가능한 모든 공간을 차지하여 버튼이 밀려나도록 설정 */
+  flex-grow: 1; /* 가능한 모든 공간을 차지하여 버튼이 밀려나도록 설정 */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: none;
+  margin: 5px;
 }
