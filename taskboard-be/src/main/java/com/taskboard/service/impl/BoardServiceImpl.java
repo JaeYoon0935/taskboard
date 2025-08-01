@@ -8,11 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.taskboard.dto.BoardDto;
 import com.taskboard.dto.PostsDto;
 import com.taskboard.entity.Board;
 import com.taskboard.entity.Posts;
-import com.taskboard.repository.BoardRepository;
 import com.taskboard.repository.PostsRepository;
 import com.taskboard.service.BoardService;
 
@@ -20,9 +18,6 @@ import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class BoardServiceImpl implements BoardService{
-	
-	@Autowired
-	private BoardRepository boardRepository;
 	
 	@Autowired
 	private PostsRepository postsRepository;

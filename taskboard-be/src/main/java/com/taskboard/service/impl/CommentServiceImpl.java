@@ -49,20 +49,17 @@ public class CommentServiceImpl implements CommentService{
 		return CommentDto.fromEntity(comment);
 	}
 	
-	
 	@Override
 	@Transactional
 	public CommentDto delComment(CommentDto param) {
 		Long commentId = param.getCommentId();
 	    Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new EntityNotFoundException("댓글을 찾을 수 없습니다: " + commentId));
 
-	    comment.setDelYn("Y"); //논리 삭제 처리
+	    comment.setDelYn("Y");
 	    comment.setModDts(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	    commentRepository.save(comment);
 	    
 	    return CommentDto.fromEntity(comment);
 	}
-	
-	
 	
 }

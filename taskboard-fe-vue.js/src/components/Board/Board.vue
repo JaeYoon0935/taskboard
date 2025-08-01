@@ -11,16 +11,16 @@
             <td>등록일</td>
             <td>수정일</td>
           </tr>
-          <tr v-for="data in postsList" :key="data.postsId">
-            <td>{{ data.postsId }}</td>
+          <tr v-for="post in postsList" :key="post.postsId">
+            <td>{{ post.postsId }}</td>
             <td>
-              <router-link :to="`/PostsDetail/${data.postsId}`">
-                {{ data.title }}
+              <router-link :to="`/PostsDetail/${post.postsId}`">
+                {{ post.title }}
               </router-link>
             </td>
-            <td>{{ data.regUser }}</td>
-            <td>{{ data.regDts }}</td>
-            <td>{{ data.modDts ? data.modDts : '-' }}</td>
+            <td>{{ post.regUser }}</td>
+            <td>{{ post.regDts }}</td>
+            <td>{{ post.modDts ? post.modDts : '-' }}</td>
           </tr>
         </tbody>
       </table>
@@ -40,7 +40,7 @@ const postsList = ref([])
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http:127.0.0.1:8080/api/Board/getPostsList')
+    const response = await axios.get('http://127.0.0.1:8080/api/Board/getPostsList')
     // setTimeout은 실제 개발에서는 거의 안 쓰지만, 리액트 코드 따라감
     setTimeout(() => {
       postsList.value = response.data

@@ -33,7 +33,8 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource())) // CORS 허용
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // 세션 사용 X
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll() // 인증 없이 허용할 엔드포인트 설정 (로그인 및 회원가입)
+                //.requestMatchers("/api/auth/**").permitAll() // 인증 없이 허용할 엔드포인트 설정 (로그인 및 회원가입)
+                    .requestMatchers("/**").permitAll()  //vue.js 테스트로 모두 개방
                 .anyRequest().authenticated()
             )
             .addFilterBefore(new JwtAuthenticationFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);

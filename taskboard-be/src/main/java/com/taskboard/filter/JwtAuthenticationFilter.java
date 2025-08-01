@@ -27,7 +27,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-    	String requestURI = request.getRequestURI();
+
+        chain.doFilter(request, response); // vue.js 테스트로 jwt 토큰 주석처리.
+
+        /*
+        String requestURI = request.getRequestURI();
 
         // 인증 없이 접근할 수 있는 경로(로그인, 회원가입)
         if(requestURI.startsWith("/api/auth/")) {
@@ -52,5 +56,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         chain.doFilter(request, response);
+
+         */
     }
 }
